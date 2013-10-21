@@ -1,0 +1,26 @@
+table.name{
+	width: 100%;
+}
+
+table.name td{
+	padding:        10px;
+	vertical-align: middle;
+}
+
+#tabContent table{
+	width: 100%;
+}
+
+table#presentation_data td,
+table#presentation_data th{
+	padding-right: 20px !important;
+}
+
+.inlineLabels label[for]{
+	display: inline;
+}
+
+#photoPreview{
+	float: left;
+	margin-right: 10px;
+}

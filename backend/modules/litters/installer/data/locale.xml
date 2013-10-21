@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<backend>
+		<litters>
+			<item type="label" name="AddLitters">
+				<translation language="nl"><![CDATA[Litters toevoegen]]></translation>
+				<translation language="en"><![CDATA[add Litters]]></translation>
+			</item>
+		</litters>
+		<core>
+			<item type="label" name="Litters">
+				<translation language="nl"><![CDATA[Litters]]></translation>
+				<translation language="en"><![CDATA[Litters]]></translation>
+			</item>
+			<item type="label" name="LittersDetail">
+				<translation language="nl"><![CDATA[Litters detail]]></translation>
+				<translation language="en"><![CDATA[Litters detail]]></translation>
+			</item>
+			<item type="label" name="LittersCategory">
+				<translation language="nl"><![CDATA[Litters categorie]]></translation>
+				<translation language="en"><![CDATA[Litters category]]></translation>
+			</item>
+			<item type="message" name="NoCategories">
+				<translation language="en"><![CDATA[no categories]]></translation>
+				<translation language="nl"><![CDATA[geen categorieën]]></translation>
+			</item>
+		</core>
+	</backend>
+	<frontend>
+		<core>
+		</core>
+	</frontend>
+</locale>
