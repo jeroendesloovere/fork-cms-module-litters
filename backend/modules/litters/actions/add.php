@@ -51,6 +51,10 @@
 			// add date field
 			$this->frm->addDate('birth_date');
 
+			// add editors
+			$this->frm->addEditor('description_before');
+			$this->frm->addEditor('description_after');
+
 			// meta
 			$this->meta = new BackendMeta($this->frm, null, 'name', true);
 		}
@@ -92,12 +96,14 @@
 
 				if($this->frm->isCorrect()){
 					// build the item
-					$item['language']   = BL::getWorkingLanguage();
-					$item['name']       = $fields['name']->getValue();
-					$item['father_id']  = $fields['father_id']->getValue();
-					$item['mother_id']  = $fields['mother_id']->getValue();
-					$item['birth_date'] = BackendModel::getUTCDate(null, BackendModel::getUTCTimestamp($this->frm->getField('birth_date')));
-					$item['sequence']   = BackendLittersModel::getMaximumSequence() + 1;
+					$item['language']			= BL::getWorkingLanguage();
+					$item['name']				= $fields['name']->getValue();
+					$item['father_id']			= $fields['father_id']->getValue();
+					$item['mother_id']			= $fields['mother_id']->getValue();
+					$item['birth_date']			= BackendModel::getUTCDate(null, BackendModel::getUTCTimestamp($this->frm->getField('birth_date')));
+					$item['description_before']	= $fields['description_before']->getValue();
+					$item['description_after']	= $fields['description_after']->getValue();
+					$item['sequence']			= BackendLittersModel::getMaximumSequence() + 1;
 
 					$item['meta_id'] = $this->meta->save();
 

@@ -38,13 +38,15 @@ class FrontendLittersDetail extends FrontendBaseBlock
 	private function getData()
 	{
 		// validate incoming parameters
-		if($this->URL->getParameter(0) === null) $this->redirect(FrontendNavigation::getURL(404));
+		if($this->URL->getParameter(1) === null) $this->redirect(FrontendNavigation::getURL(404));
 
 		// get record
-		$this->record = FrontendLittersModel::get($this->URL->getParameter(0));
+		$this->record = FrontendLittersModel::getLitter($this->URL->getParameter(1));
 
 		// check if record is not empty
 		if(empty($this->record)) $this->redirect(FrontendNavigation::getURL(404));
+
+		$this->youngs = FrontendLittersModel::getYoungs($this->record['id']);
 	}
 
 	/**
@@ -84,5 +86,8 @@ class FrontendLittersDetail extends FrontendBaseBlock
 
 		// assign item
 		$this->tpl->assign('item', $this->record);
+		$this->tpl->assign('youngs', $this->youngs);
+
+		$this->tpl->mapModifier('createimage', array('FrontendLittersHelper', 'createImage'));
 	}
 }

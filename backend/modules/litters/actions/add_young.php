@@ -36,13 +36,14 @@
 		 * Validate the form
 		 */
 		protected function validateForm(){
+			$this->litterId = SpoonFilter::getPostValue('litter_id', null, 'int');
+
 			if($this->frm->isSubmitted()){
 				$this->frm->cleanupFields();
 				$fields = $this->frm->getFields();
 
 				// validation
 				$fields['code_name']->isFilled(BL::err('FieldIsRequired'));
-				$fields['litter_id']->isFilled(BL::err('FieldIsRequired'));
 
 				// validate photo
 				if($fields['photo']->isFilled()){
@@ -57,19 +58,22 @@
 					// build the item
 					$sex = $fields['sex']->getValue();
 					$item = array(
-						'litter_id'      => $fields['litter_id']->getValue(),
-						'language'       => BL::getWorkingLanguage(),
-						'code_name'      => $fields['code_name']->getValue(),
-						'name'           => $fields['young_name']->getValue(),
-						'sex'            => $sex == '' ? NULL : $sex,
-						'color'          => $fields['color']->getValue(),
-						'url'            => $fields['gallery_url']->getValue(),
-						'sequence'       => BackendLittersModel::getMaximumSequence() + 1,
+						'litter_id'		=> $this->litterId,
+						'language'		=> BL::getWorkingLanguage(),
+						'code_name'		=> $fields['code_name']->getValue(),
+						'name'			=> $fields['young_name']->getValue(),
+						'sex'			=> $sex == '' ? NULL : $sex,
+						'color'			=> $fields['color']->getValue(),
+						'ems_code'		=> $fields['ems_code']->getValue(),
+						'availability'  => $fields['availability']->getValue(),
+						'quality'		=> $fields['quality']->getValue(),
+						'url'			=> $fields['gallery_url']->getValue(),
+						'sequence'		=> BackendLittersModel::getMaximumSequence() + 1,
 					);
 
 					// handle photo
 					if($fields['photo']->isFilled()){
-						$photo_url = '/litters/' . $item['litter_id'] . '/photos/source/' . rand(0, 3) . '_' . BackendLittersHelper::sanitizeFilename($item['code_name']) . '.' . $fields['photo']->getExtension();
+						$photo_url = "/litters/original/litters/${item['litter_id']}/tmp_" . rand(0, 99) . ".{$fields['photo']->getExtension()}";
 						if(!$fields['photo']->moveFile(FRONTEND_FILES_PATH . $photo_url)){
 							$fields['photo']->setError(BL::err('CannotProcessPhoto'));
 
@@ -82,7 +86,14 @@
 					}
 
 					// insert it
-						$item['id'] = BackendLittersModel::insert($item, 'litters_youngs');
+					$item['id'] = BackendLittersModel::insert($item, 'litters_youngs');
+
+					// move the picture to its definitive location & update the db record
+					$item['photo_url'] = "/litters/original/litters/{$item['litter_id']}/{$item['id']}.{$fields['photo']->getExtension()}";
+					if(rename(FRONTEND_FILES_PATH . $photo_url, FRONTEND_FILES_PATH . $item['photo_url'])){
+						$item['photo_url'] = '/frontend/files' . $item['photo_url'];
+						BackendLittersModel::update($item, 'litters_youngs');
+					}
 
 					BackendModel::triggerEvent($this->getModule(), 'after_add_young', $item);
 					BackendModel::triggerEvent($this->getModule(), 'after_edit', BackendLittersModel::get($item['litter_id']));

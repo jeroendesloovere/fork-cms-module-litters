@@ -7,7 +7,7 @@
 
 {form:add}
 	<label for="name">{$lblName|ucfirst}</label>
-{$txtName} {$txtNameError}
+	{$txtName} {$txtNameError}
 	<div id="pageUrl">
 		<div class="oneLiner">
 			{option:detailURL}<p><span><a href="{$detailURL}">{$detailURL}/<span id="generatedUrl"></span></a></span>
@@ -61,6 +61,28 @@
 							</div>
 							<div class="options">
 								<p>{$txtBirthDate} {$txtBirthDateError}</p>
+							</div>
+						</div>
+
+						<div class="box">
+							<div class="heading">
+								<h3>
+									<label for="descriptionBefore">{$lblDescriptionBefore|ucfirst}
+								</h3>
+							</div>
+							<div class="options">
+								<p>{$txtDescriptionBefore} {$txtDescriptionBeforeError}</p>
+							</div>
+						</div>
+
+						<div class="box">
+							<div class="heading">
+								<h3>
+									<label for="descriptionAfter">{$lblDescriptionAfter|ucfirst}
+								</h3>
+							</div>
+							<div class="options">
+								<p>{$txtDescriptionAfter} {$txtDescriptionAfterError}</p>
 							</div>
 						</div>
 					</td>

@@ -5,6 +5,8 @@
 	 *
 	 * @author Yohann Bianchi <sbooob@gmail.com>
 	 */
+	use Symfony\Component\Filesystem\Filesystem;
+
 	class BackendLittersEditYoung extends BackendBaseActionAdd{
 		/**
 		 * Execute the actions
@@ -30,13 +32,13 @@
 		 * Load the item data
 		 */
 		protected function getData(){
-			$this->id = $this->getParameter('id', 'int', null);
+			$this->id = SpoonFilter::getPostValue('young_id', null, 'int');
 			$this->litterId = SpoonFilter::getPostValue('litter_id', null, 'int');
 			if($this->id == null || !BackendLittersModel::exists($this->id, 'litters_youngs')){
-				$this->redirect(BackendModel::createURLForAction('edit') . '&error=non-existing');// TODO: add litter id
+				$this->redirect(BackendModel::createURLForAction('edit') . '&error=non-existing&id=' . $this->litterId);
 			}
 
-			$this->record = BackendLittersModel::get($this->id, 'litters_parents');
+			$this->record = BackendLittersModel::get($this->id, 'litters_youngs');
 		}
 
 		/**
@@ -49,7 +51,6 @@
 
 				// validation
 				$fields['code_name']->isFilled(BL::err('FieldIsRequired'));
-				$fields['litter_id']->isFilled(BL::err('FieldIsRequired'));
 
 				// validate photo
 				if($fields['photo']->isFilled()){
@@ -65,13 +66,16 @@
 					$sex  = $fields['sex']->getValue();
 					$item = array(
 						'id'  => $this->id,
-						'litter_id' => $fields['litter_id']->getValue(),
-						'language'  => BL::getWorkingLanguage(),
-						'code_name' => $fields['code_name']->getValue(),
-						'name'      => $fields['young_name']->getValue(),
-						'sex'       => $sex === '' ? null : $sex,
-						'color'     => $fields['color']->getValue(),
-						'url'       => $fields['gallery_url']->getValue(),
+						'litter_id'		=> $this->litterId,
+						'language'		=> BL::getWorkingLanguage(),
+						'code_name'		=> $fields['code_name']->getValue(),
+						'name'			=> $fields['young_name']->getValue(),
+						'sex'			=> $sex === '' ? null : $sex,
+						'color'			=> $fields['color']->getValue(),
+						'ems_code'		=> $fields['ems_code']->getValue(),
+						'availability'  => $fields['availability']->getValue(),
+						'quality'		=> $fields['quality']->getValue(),
+						'url'			=> $fields['gallery_url']->getValue(),
 					);
 
 					// handle photo
@@ -81,7 +85,7 @@
 							$fs = new Filesystem();
 							$fs->remove(PATH_WWW . $this->record['photo_url']);
 						}
-						$photo_url = '/litters/' . $item['litter_id'] . '/photos/source/' . rand(0, 3) . '_' . BackendLittersHelper::sanitizeFilename($item['code_name']) . '.' . $fields['photo']->getExtension();
+						$photo_url = "/litters/original/litters/${item['litter_id']}/{$item['id']}.{$fields['photo']->getExtension()}";
 						if(!$fields['photo']->moveFile(FRONTEND_FILES_PATH . $photo_url)){
 							$fields['photo']->setError(BL::err('CannotProcessPhoto'));
 

@@ -131,7 +131,7 @@
 
 					// handle photo
 					if($fields['photo']->isFilled()){
-						$photo_url = '/litters/parents/photos/source/' . rand(0, 3) . '_' . BackendLittersHelper::sanitizeFilename($item['name'] . '_' . $item['affix']) . '.' . $fields['photo']->getExtension();
+						$photo_url = "/litters/original/parents/tmp_" . rand(0, 99) . ".{$fields['photo']->getExtension()}";
 						if(!$fields['photo']->moveFile(FRONTEND_FILES_PATH . $photo_url)){
 							$fields['photo']->setError(BL::err('CannotProcessPhoto'));
 
@@ -147,6 +147,13 @@
 
 					// insert it
 					$item['id'] = BackendLittersModel::insert($item, 'litters_parents');
+
+					// move the picture to its definitive location & update the db record
+					$item['photo_url'] = "/litters/original/parents/{$item['id']}.{$fields['photo']->getExtension()}";
+					if(rename(FRONTEND_FILES_PATH . $photo_url, FRONTEND_FILES_PATH . $item['photo_url'])){
+						$item['photo_url'] = '/frontend/files' . $item['photo_url'];
+						BackendLittersModel::update($item, 'litters_parents');
+					}
 
 					// add search index
 					BackendSearchModel::saveIndex($this->getModule(), $item['id'], array('name' => $item['name']));

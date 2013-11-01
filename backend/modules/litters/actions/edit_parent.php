@@ -139,6 +139,7 @@
 						'name'           => $fields['name']->getValue(),
 						'affix'          => $fields['affix']->getValue(),
 						'affix_position' => $fields['affix_position']->getValue(),
+						'sex'		     => $this->frm->getField('sex')->getValue(),
 						'birth_date'     => BackendModel::getUTCDate(null, BackendModel::getUTCTimestamp($this->frm->getField('birth_date'))),
 						'color'          => $fields['color']->getValue(),
 						'url'            => $fields['personal_page_url']->getValue(),
@@ -155,7 +156,7 @@
 						}
 
 						// save new
-						$photo_url = '/litters/parents/photos/source/' . rand(0, 3) . '_' . BackendLittersHelper::sanitizeFilename($item['name'] . '_' . $item['affix']) . '.' . $fields['photo']->getExtension();
+						$photo_url = "/litters/original/parents/{$item['id']}.{$fields['photo']->getExtension()}";
 						if(!$fields['photo']->moveFile(FRONTEND_FILES_PATH . $photo_url)){
 							$fields['photo']->setError(BL::err('CannotProcessPhoto'));
 
@@ -167,8 +168,7 @@
 						$item['photo_url'] = '/frontend/files' . $photo_url;
 					}
 
-					BackendLittersModel::updateParent($item);
-					$item['id'] = $this->id;
+					BackendLittersModel::update($item, 'litters_parents');
 
 					// add search index
 					BackendSearchModel::saveIndex($this->getModule(), $item['id'], array('name' => $item['name']));

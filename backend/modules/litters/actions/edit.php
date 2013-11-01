@@ -78,6 +78,10 @@
 			// add date field
 			$this->frm->addDate('birth_date', $this->record['birth_date']);
 
+			// add editors
+			$this->frm->addEditor('description_before', $this->record['description_before']);
+			$this->frm->addEditor('description_after', $this->record['description_after']);
+
 			// meta
 			$this->meta = new BackendMeta($this->frm, $this->record['meta_id'], 'name', true);
 			$this->meta->setUrlCallBack('BackendLittersModel', 'getUrl', array($this->record['id']));
@@ -85,7 +89,7 @@
 
 		protected function loadYoungForm(){
 			require_once(BACKEND_MODULE_PATH . '/forms/YoungForm.php');
-			$this->youngForm = new YoungForm('young', BackendModel::createURLForAction('edit') . '&id=' . $this->id);
+			$this->youngForm = new YoungForm('young', BackendModel::createURLForAction('edit_young') . '&litter_id=' . $this->id);
 			$this->youngForm->addHidden('litter_id', $this->record['id']);
 		}
 
@@ -125,18 +129,19 @@
 				$fields['birth_date']->isValid(BL::err('DateIsInvalid'));
 
 				// validate meta
-				$this->meta->
 				$this->meta->validate();
 
 				if($this->frm->isCorrect()){
 					$item['id']       = $this->id;
 					$item['language'] = BL::getWorkingLanguage();
 
-					$item['name']       = $fields['name']->getValue();
-					$item['father_id']  = $fields['father_id']->getValue();
-					$item['mother_id']  = $fields['mother_id']->getValue();
-					$item['birth_date'] = BackendModel::getUTCDate(null, BackendModel::getUTCTimestamp($this->frm->getField('birth_date')));
-					$item['sequence']   = BackendLittersModel::getMaximumSequence() + 1;
+					$item['name']				= $fields['name']->getValue();
+					$item['father_id']			= $fields['father_id']->getValue();
+					$item['mother_id']			= $fields['mother_id']->getValue();
+					$item['birth_date']			= BackendModel::getUTCDate(null, BackendModel::getUTCTimestamp($this->frm->getField('birth_date')));
+					$item['description_before']	= $fields['description_before']->getValue();
+					$item['description_after']	= $fields['description_after']->getValue();
+					$item['sequence']			= BackendLittersModel::getMaximumSequence() + 1;
 
 					$item['meta_id'] = $this->meta->save();
 

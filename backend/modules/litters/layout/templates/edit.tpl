@@ -54,12 +54,34 @@
 						<div class="box">
 							<div class="heading">
 								<h3>
-									<label for="birthDateDate">{$lblBirthDate|ucfirst}
+									<label for="birthDate">{$lblBirthDate|ucfirst}
 										<abbr title="{$lblRequiredField}">*</abbr></label>
 								</h3>
 							</div>
 							<div class="options">
 								<p>{$txtBirthDate} {$txtBirthDateError}</p>
+							</div>
+						</div>
+
+						<div class="box">
+							<div class="heading">
+								<h3>
+									<label for="descriptionBefore">{$lblDescriptionBefore|ucfirst}
+								</h3>
+							</div>
+							<div class="options">
+								<p>{$txtDescriptionBefore} {$txtDescriptionBeforeError}</p>
+							</div>
+						</div>
+
+						<div class="box">
+							<div class="heading">
+								<h3>
+									<label for="descriptionAfter">{$lblDescriptionAfter|ucfirst}
+								</h3>
+							</div>
+							<div class="options">
+								<p>{$txtDescriptionAfter} {$txtDescriptionAfterError}</p>
 							</div>
 						</div>
 					</td>
@@ -142,6 +164,24 @@
 			<p>
 				<label for="color">{$lblColor|ucfirst}</label>
 				{$txtColor} {$txtColorError}
+			</p>
+		</div>
+		<div class="options">
+			<p>
+				<label for="ems_code">{$lblEms|ucfirst}</label>
+				{$txtEmsCode} {$txtEmsCodeError}
+			</p>
+		</div>
+		<div class="options">
+			<p>
+				<label for="availability">{$lblAvailability|ucfirst}</label>
+				{$ddmAvailability} {$ddmAvailabilityError}
+			</p>
+		</div>
+		<div class="options">
+			<p>
+				<label for="quality">{$lblQuality|ucfirst}</label>
+				{$ddmQuality} {$ddmQualityError}
 			</p>
 		</div>
 		<div class="options">
