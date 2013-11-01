@@ -1,0 +1,14 @@
+lblSex
+lblGallery
+lblEms
+lblColor
+lblQuality
+lblAvailability
+lblQualityBreeder
+lblQualityShow
+lblQualityNull
+lblQualityPer
+lblAvailabilityAvailable
+lblAvailabilityNull
+lblAvailabilityKeeper
+lblAvailabilityReserved
