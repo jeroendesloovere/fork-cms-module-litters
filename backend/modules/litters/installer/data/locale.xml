@@ -1,33 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locale>
-	<backend>
-		<litters>
-			<item type="label" name="AddLitters">
-				<translation language="nl"><![CDATA[Litters toevoegen]]></translation>
-				<translation language="en"><![CDATA[add Litters]]></translation>
-			</item>
-		</litters>
-		<core>
-			<item type="label" name="Litters">
-				<translation language="nl"><![CDATA[Litters]]></translation>
-				<translation language="en"><![CDATA[Litters]]></translation>
-			</item>
-			<item type="label" name="LittersDetail">
-				<translation language="nl"><![CDATA[Litters detail]]></translation>
-				<translation language="en"><![CDATA[Litters detail]]></translation>
-			</item>
-			<item type="label" name="LittersCategory">
-				<translation language="nl"><![CDATA[Litters categorie]]></translation>
-				<translation language="en"><![CDATA[Litters category]]></translation>
-			</item>
-			<item type="message" name="NoCategories">
-				<translation language="en"><![CDATA[no categories]]></translation>
-				<translation language="nl"><![CDATA[geen categorieën]]></translation>
-			</item>
-		</core>
-	</backend>
-	<frontend>
-		<core>
-		</core>
-	</frontend>
+  <backend>
+  	<litters>
+		<item type="label" name="AddLitter">
+			<translation language="fr"><![CDATA[ajouter une portée]]></translation>
+			<translation language="en"><![CDATA[add litter]]></translation>
+		</item>
+		<item type="label" name="AddParent">
+			<translation language="fr"><![CDATA[ajouter un parent]]></translation>
+			<translation language="en"><![CDATA[add parent]]></translation>
+		</item>
+		<item type="label" name="AddYoung">
+			<translation language="fr"><![CDATA[ajouter un petit]]></translation>
+			<translation language="en"><![CDATA[add a young]]></translation>
+		</item>
+		<item type="label" name="Affix">
+			<translation language="fr"><![CDATA[affixe]]></translation>
+			<translation language="en"><![CDATA[affix]]></translation>
+		</item>
+		<item type="label" name="AffixPosition">
+			<translation language="fr"><![CDATA[placement de l'affixe]]></translation>
+			<translation language="en"><![CDATA[affix position]]></translation>
+		</item>
+		<item type="label" name="Append">
+			<translation language="fr"><![CDATA[suffixe]]></translation>
+			<translation language="en"><![CDATA[after]]></translation>
+		</item>
+		<item type="label" name="Availability">
+			<translation language="fr"><![CDATA[disponibilité]]></translation>
+			<translation language="en"><![CDATA[availability]]></translation>
+		</item>
+		<item type="label" name="AvailabilityAvailable">
+			<translation language="fr"><![CDATA[disponible]]></translation>
+			<translation language="en"><![CDATA[available]]></translation>
+		</item>
+		<item type="label" name="AvailabilityKeeper">
+			<translation language="fr"><![CDATA[reste à l'élevage]]></translation>
+			<translation language="en"><![CDATA[keeper]]></translation>
+		</item>
+		<item type="label" name="AvailabilityNull">
+			<translation language="fr"><![CDATA[indeterminée]]></translation>
+			<translation language="en"><![CDATA[undertermined]]></translation>
+		</item>
+		<item type="label" name="AvailabilityReserved">
+			<translation language="fr"><![CDATA[réservé]]></translation>
+			<translation language="en"><![CDATA[reserved]]></translation>
+		</item>
+		<item type="label" name="BirthDate">
+			<translation language="fr"><![CDATA[date de naissance]]></translation>
+			<translation language="en"><![CDATA[birth date]]></translation>
+		</item>
+		<item type="label" name="CodeName">
+			<translation language="fr"><![CDATA[nom de code]]></translation>
+			<translation language="en"><![CDATA[codename]]></translation>
+		</item>
+		<item type="label" name="Color">
+			<translation language="fr"><![CDATA[robe]]></translation>
+			<translation language="en"><![CDATA[robe]]></translation>
+		</item>
+		<item type="label" name="DescriptionAfter">
+			<translation language="fr"><![CDATA[Description (après la liste des petits)]]></translation>
+			<translation language="en"><![CDATA[Description (after the list of youngs)]]></translation>
+		</item>
+		<item type="label" name="DescriptionBefore">
+			<translation language="fr"><![CDATA[Description (avant la liste des petits)]]></translation>
+			<translation language="en"><![CDATA[Description (before the list of youngs)]]></translation>
+		</item>
+		<item type="label" name="EditYoung">
+			<translation language="fr"><![CDATA[modifier un petit]]></translation>
+			<translation language="en"><![CDATA[edit a young]]></translation>
+		</item>
+		<item type="label" name="Ems">
+			<translation language="fr"><![CDATA[code EMS]]></translation>
+			<translation language="en"><![CDATA[EMS code]]></translation>
+		</item>
+		<item type="label" name="FatherId">
+			<translation language="fr"><![CDATA[père]]></translation>
+			<translation language="en"><![CDATA[father]]></translation>
+		</item>
+		<item type="label" name="Female">
+			<translation language="fr"><![CDATA[femelle]]></translation>
+			<translation language="en"><![CDATA[female]]></translation>
+		</item>
+		<item type="label" name="GalleryUrl">
+			<translation language="fr"><![CDATA[URL de la galerie]]></translation>
+			<translation language="en"><![CDATA[gallery URL]]></translation>
+		</item>
+		<item type="label" name="Male">
+			<translation language="fr"><![CDATA[mâle]]></translation>
+			<translation language="en"><![CDATA[male]]></translation>
+		</item>
+		<item type="label" name="MotherId">
+			<translation language="fr"><![CDATA[mère]]></translation>
+			<translation language="en"><![CDATA[mother]]></translation>
+		</item>
+		<item type="label" name="NumItems">
+			<translation language="fr"><![CDATA[nombre de portées]]></translation>
+			<translation language="en"><![CDATA[number of litters]]></translation>
+		</item>
+		<item type="label" name="Parents">
+			<translation language="fr"><![CDATA[Parents]]></translation>
+			<translation language="en"><![CDATA[Parents]]></translation>
+		</item>
+		<item type="label" name="PersonalPageUrl">
+			<translation language="fr"><![CDATA[URL de la page personnelle]]></translation>
+			<translation language="en"><![CDATA[personal page URL]]></translation>
+		</item>
+		<item type="label" name="Photo">
+			<translation language="fr"><![CDATA[photo]]></translation>
+			<translation language="en"><![CDATA[photo]]></translation>
+		</item>
+		<item type="label" name="PhysicalCharacteristics">
+			<translation language="fr"><![CDATA[caractéristique physiques]]></translation>
+			<translation language="en"><![CDATA[physical characteristics]]></translation>
+		</item>
+		<item type="label" name="Prepend">
+			<translation language="fr"><![CDATA[avant]]></translation>
+			<translation language="en"><![CDATA[before]]></translation>
+		</item>
+		<item type="label" name="PresentationData">
+			<translation language="fr"><![CDATA[données de présentation]]></translation>
+			<translation language="en"><![CDATA[presentation data]]></translation>
+		</item>
+		<item type="label" name="Quality">
+			<translation language="fr"><![CDATA[qualité]]></translation>
+			<translation language="en"><![CDATA[quality]]></translation>
+		</item>
+		<item type="label" name="QualityBreeder">
+			<translation language="fr"><![CDATA[reproduction]]></translation>
+			<translation language="en"><![CDATA[breeder]]></translation>
+		</item>
+		<item type="label" name="QualityNull">
+			<translation language="fr"><![CDATA[indéterminée]]></translation>
+			<translation language="en"><![CDATA[undertermined]]></translation>
+		</item>
+		<item type="label" name="QualityPet">
+			<translation language="fr"><![CDATA[compagnie]]></translation>
+			<translation language="en"><![CDATA[pet]]></translation>
+		</item>
+		<item type="label" name="QualityShow">
+			<translation language="fr"><![CDATA[exposition]]></translation>
+			<translation language="en"><![CDATA[show]]></translation>
+		</item>
+		<item type="label" name="Sequence">
+			<translation language="fr"><![CDATA[position]]></translation>
+			<translation language="en"><![CDATA[position]]></translation>
+		</item>
+		<item type="label" name="Sex">
+			<translation language="fr"><![CDATA[sexe]]></translation>
+			<translation language="en"><![CDATA[sex]]></translation>
+		</item>
+		<item type="label" name="Undetermined">
+			<translation language="fr"><![CDATA[indéterminée]]></translation>
+			<translation language="en"><![CDATA[undetermined]]></translation>
+		</item>
+		<item type="label" name="YoungName">
+			<translation language="fr"><![CDATA[name du petit]]></translation>
+			<translation language="en"><![CDATA[young name]]></translation>
+		</item>
+		<item type="label" name="Youngs">
+			<translation language="fr"><![CDATA[petits]]></translation>
+			<translation language="en"><![CDATA[youngs]]></translation>
+		</item>
+		<item type="error" name="CannotProcessPhoto">
+			<translation language="fr"><![CDATA[Une erreur indeterminée s'est produite pendant le traitement de la photo. Veuillez ré-essayer.]]></translation>
+			<translation language="en"><![CDATA[An unknown error occurred while processing the photo. Please retry.]]></translation>
+		</item>
+		<item type="error" name="FileIsTooLarge">
+			<translation language="fr"><![CDATA[La taille du fichier est supérieure à la taille maximale autorisée.]]></translation>
+			<translation language="en"><![CDATA[The filesize is greater than the maximum allowed value.]]></translation>
+		</item>
+		<item type="message" name="ConfirmDelete">
+			<translation language="fr"><![CDATA[Êtes-vous sûr de vouloir supprimer la portée "%1$s" ?]]></translation>
+			<translation language="en"><![CDATA[Are you sure you want to delete the litter "%1$s"?]]></translation>
+		</item>
+		<item type="message" name="ConfirmDeleteParent">
+			<translation language="fr"><![CDATA[Êtes-vous sûr de vouloir supprimer le parent "%1$s" ?]]></translation>
+			<translation language="en"><![CDATA[Are you sure you want to delete the parent "%1$s"?]]></translation>
+		</item>
+		<item type="message" name="HelpCodeName">
+			<translation language="fr"><![CDATA[Nom donné par l'éleveur avant que la famille n'ait choisi le nom définitif.]]></translation>
+			<translation language="en"><![CDATA[Name given by the breeder before the family had chosen the definitive name.]]></translation>
+		</item>
+	</litters>
+    <core>
+		<item type="label" name="Litters">
+			<translation language="fr"><![CDATA[Portées]]></translation>
+			<translation language="en"><![CDATA[Litters]]></translation>
+		</item>
+    </core>
+	<pages>
+		<item type="label" name="LittersDetail">
+			<translation language="fr"><![CDATA[Afficher une portée]]></translation>
+			<translation language="en"><![CDATA[Show a litter]]></translation>
+		</item>
+	</pages>
+  </backend>
+  <frontend>
+    <core>
+		<item type="label" name="Gallery">
+			<translation language="fr"><![CDATA[galerie]]></translation>
+			<translation language="en"><![CDATA[gallery]]></translation>
+		</item>
+		<item type="label" name="Sex">
+			<translation language="fr"><![CDATA[sexe]]></translation>
+			<translation language="en"><![CDATA[sex]]></translation>
+		</item>
+		<item type="label" name="Quality">
+			<translation language="fr"><![CDATA[qualité]]></translation>
+			<translation language="en"><![CDATA[quality]]></translation>
+		</item>
+		<item type="label" name="Ems">
+			<translation language="fr"><![CDATA[code EMS]]></translation>
+			<translation language="en"><![CDATA[EMS code]]></translation>
+		</item>
+		<item type="label" name="Availability">
+			<translation language="fr"><![CDATA[disponibilité]]></translation>
+			<translation language="en"><![CDATA[availability]]></translation>
+		</item>
+		<item type="label" name="Color">
+			<translation language="fr"><![CDATA[robe]]></translation>
+			<translation language="en"><![CDATA[robe]]></translation>
+		</item>
+		<item type="label" name="QualityNull">
+			<translation language="fr"><![CDATA[indéterminé]]></translation>
+			<translation language="en"><![CDATA[undertermined]]></translation>
+		</item>
+		<item type="label" name="QualityPet">
+			<translation language="fr"><![CDATA[compagnie]]></translation>
+			<translation language="en"><![CDATA[pet]]></translation>
+		</item>
+		<item type="label" name="QualityBreeder">
+			<translation language="fr"><![CDATA[reproduction]]></translation>
+			<translation language="en"><![CDATA[breeder]]></translation>
+		</item>
+		<item type="label" name="QualityShow">
+			<translation language="fr"><![CDATA[exposition]]></translation>
+			<translation language="en"><![CDATA[show]]></translation>
+		</item>
+		<item type="label" name="AvailabilityNull">
+			<translation language="fr"><![CDATA[indéterminé]]></translation>
+			<translation language="en"><![CDATA[undetermined]]></translation>
+		</item>
+		<item type="label" name="AvailabilityAvailable">
+			<translation language="fr"><![CDATA[disponible]]></translation>
+			<translation language="en"><![CDATA[available]]></translation>
+		</item>
+		<item type="label" name="AvailabilityKeeper">
+			<translation language="fr"><![CDATA[reste à l'élevage]]></translation>
+			<translation language="en"><![CDATA[keeper]]></translation>
+		</item>
+		<item type="label" name="AvailabilityReserved">
+			<translation language="fr"><![CDATA[reservé]]></translation>
+			<translation language="en"><![CDATA[reserved]]></translation>
+		</item>
+		<item type="label" name="Availability">
+			<translation language="fr"><![CDATA[disponibilité]]></translation>
+			<translation language="en"><![CDATA[availability]]></translation>
+		</item>
+		<item type="label" name="SearchText">
+			<translation language="fr"><![CDATA[Portée de %1$s et %2$s, née le %3$s.]]></translation>
+			<translation language="en"><![CDATA[Portée de %1$s et %2$s, née le %3$s.]]></translation>
+		</item>
+	</core>
+  </frontend>
 </locale>

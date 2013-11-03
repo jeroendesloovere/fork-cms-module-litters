@@ -3,7 +3,7 @@
 
 <div class="pageTitle">
 	<h2>
-		{$lblLittersParents|ucfirst}
+		{$lblParents|ucfirst}
 	</h2>
 
 	<div class="buttonHolderRight">

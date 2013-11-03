@@ -6,7 +6,11 @@
 		<minimum_version>3.6.5</minimum_version>
 	</requirements>
 	<description>
-		<![CDATA[This module was design for pet breeders, to enable litter management through ForkCMS.]]>
+		<![CDATA[
+			This module was designed for pet breeders, to enable litter management through ForkCMS.
+			In the future, this module will be renamed to "Breeding" and more features will be added
+			(planned matings, presentation pages for parents...).
+		]]>
 	</description>
 	<authors>
 		<author>
@@ -26,7 +30,5 @@
 		<event application="backend" name="after_edit"><![CDATA[Triggered when a litter is edited.]]></event>
 		<event application="backend" name="after_edit_young"><![CDATA[Triggered when a young is edited.]]></event>
 		<event application="backend" name="after_edit_parent"><![CDATA[Triggered when a parent is edited.]]></event>
-
-		<event application="backend" name="after_saved_settings"><![CDATA[Triggered when settings are saved.]]></event>
 	</events>
 </module>
