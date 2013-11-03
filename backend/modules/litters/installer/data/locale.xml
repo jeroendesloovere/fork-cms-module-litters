@@ -262,6 +262,14 @@
 			<translation language="fr"><![CDATA[Portée de %1$s et %2$s, née le %3$s.]]></translation>
 			<translation language="en"><![CDATA[Portée de %1$s et %2$s, née le %3$s.]]></translation>
 		</item>
+		<item type="label" name="Mother">
+			<translation language="fr"><![CDATA[Maman]]></translation>
+			<translation language="en"><![CDATA[Mother]]></translation>
+		</item>
+		<item type="label" name="Father">
+			<translation language="fr"><![CDATA[Papa]]></translation>
+			<translation language="en"><![CDATA[Father]]></translation>
+		</item>
 	</core>
   </frontend>
 </locale>
