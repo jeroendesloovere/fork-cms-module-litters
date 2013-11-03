@@ -88,11 +88,13 @@
 					// insert it
 					$item['id'] = BackendLittersModel::insert($item, 'litters_youngs');
 
-					// move the picture to its definitive location & update the db record
-					$item['photo_url'] = "/litters/original/litters/{$item['litter_id']}/{$item['id']}.{$fields['photo']->getExtension()}";
-					if(rename(FRONTEND_FILES_PATH . $photo_url, FRONTEND_FILES_PATH . $item['photo_url'])){
-						$item['photo_url'] = '/frontend/files' . $item['photo_url'];
-						BackendLittersModel::update($item, 'litters_youngs');
+					if($fields['photo']->isFilled()){
+						// move the picture to its definitive location & update the db record
+						$item['photo_url'] = "/litters/original/litters/{$item['litter_id']}/{$item['id']}.{$fields['photo']->getExtension()}";
+						if(rename(FRONTEND_FILES_PATH . $photo_url, FRONTEND_FILES_PATH . $item['photo_url'])){
+							$item['photo_url'] = '/frontend/files' . $item['photo_url'];
+							BackendLittersModel::update($item, 'litters_youngs');
+						}
 					}
 
 					BackendModel::triggerEvent($this->getModule(), 'after_add_young', $item);
