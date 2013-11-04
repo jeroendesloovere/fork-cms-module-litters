@@ -30,9 +30,7 @@
 					<td id="sidebar">
 						<div class="box">
 							<div class="heading">
-								<h3>
-									<label for="father">{$lblFatherId|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label>
-								</h3>
+								<h3><label for="father">{$lblFatherId|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label></h3>
 							</div>
 							<div class="options">
 								{$ddmFatherId} {$ddmFatherIdError}
@@ -41,9 +39,7 @@
 
 						<div class="box">
 							<div class="heading">
-								<h3>
-									<label for="mother">{$lblMotherId|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label>
-								</h3>
+								<h3><label for="mother">{$lblMotherId|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label></h3>
 							</div>
 							<div class="options">
 								{$ddmMotherId} {$ddmMotherIdError}
@@ -52,10 +48,7 @@
 
 						<div class="box">
 							<div class="heading">
-								<h3>
-									<label for="birthDate">{$lblBirthDate|ucfirst}
-										<abbr title="{$lblRequiredField}">*</abbr></label>
-								</h3>
+								<h3><label for="birthDate">{$lblBirthDate|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label></h3>
 							</div>
 							<div class="options">
 								<p>{$txtBirthDate} {$txtBirthDateError}</p>
@@ -64,9 +57,7 @@
 
 						<div class="box">
 							<div class="heading">
-								<h3>
-									<label for="descriptionBefore">{$lblDescriptionBefore|ucfirst}
-								</h3>
+								<h3><label for="descriptionBefore">{$lblDescriptionBefore|ucfirst}</h3>
 							</div>
 							<div class="options">
 								<p>{$txtDescriptionBefore} {$txtDescriptionBeforeError}</p>
@@ -75,9 +66,7 @@
 
 						<div class="box">
 							<div class="heading">
-								<h3>
-									<label for="descriptionAfter">{$lblDescriptionAfter|ucfirst}
-								</h3>
+								<h3><label for="descriptionAfter">{$lblDescriptionAfter|ucfirst}</h3>
 							</div>
 							<div class="options">
 								<p>{$txtDescriptionAfter} {$txtDescriptionAfterError}</p>
@@ -93,9 +82,7 @@
 		</div>
 		<div id="tabYoungs">
 			<div class="pageTitle">
-				<h2>
-					{$lblYoungs|ucfirst}
-				</h2>
+				<h2>{$lblYoungs|ucfirst}</h2>
 
 				<div class="buttonHolderRight">
 					<a href="{$var|geturl:'add_young'}" id="addYoungButton" class="button icon iconAdd" title="{$lblAddYoung|ucfirst}">

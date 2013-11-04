@@ -6,7 +6,6 @@ jsBackend.littersEdit = {
 
 	// initialization
 	init: function (){
-		//		jsBackend.littersEdit.initAjax();
 		jsBackend.littersEdit.initVars();
 		jsBackend.littersEdit.bindDialog();
 		jsBackend.littersEdit.bindButtons();
@@ -102,7 +101,7 @@ jsBackend.littersEdit = {
 	},
 
 	// define the end of the object
-	eoo:         true
+	eoo: true
 };
 
 $(jsBackend.littersEdit.init);
