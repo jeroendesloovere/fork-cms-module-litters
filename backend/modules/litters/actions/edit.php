@@ -106,6 +106,9 @@
 			// parse additional variables
 			if($url404 != $url) $this->tpl->assign('detailURL', SITE_URL . $url);
 
+			// fetch proper slug
+			$this->record['url'] = $this->meta->getURL();
+
 			$this->tpl->assign('item', $this->record);
 			$datagrid = $this->dgYoungs->getContent();
 			if($datagrid !== null) $this->tpl->assign('dgYoungs', $datagrid);

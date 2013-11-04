@@ -99,10 +99,12 @@ EOQ;
 			if($table != 'litters_youngs'){
 				$req = <<< EOQ
 SELECT
-	*,
-	UNIX_TIMESTAMP(birth_date) AS birth_date
-FROM ${table}
-WHERE id = ?;
+	t.*,
+	meta.url,
+	UNIX_TIMESTAMP(t.birth_date) AS birth_date
+FROM ${table} AS t
+LEFT JOIN meta ON t.meta_id = meta.id
+WHERE t.id = ?;
 EOQ;
 			}
 			else{
