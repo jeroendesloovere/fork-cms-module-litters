@@ -24,6 +24,7 @@ class FrontendLittersModel
 		$query = <<< EOQ
 SELECT
 	litters.*,
+	UNIX_TIMESTAMP(litters.birth_date) AS birth_date,
 	meta.keywords AS meta_keywords,
 	meta.keywords_overwrite AS meta_keywords_overwrite,
 	meta.description AS meta_description,

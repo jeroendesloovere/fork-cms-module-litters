@@ -20,7 +20,7 @@
 	</div>
 
 	<div class="six-eighths">
-		<h1>{$title|ucfirst} ({$item.birth_date})</h1>
+		<h1>{$title|ucfirst} ({$item.birth_date|date:{$dateFormatLong}:{$LANGUAGE}})</h1>
 
 		{option:item.description_before}
 		<section>
