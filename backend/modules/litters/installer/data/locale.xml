@@ -34,6 +34,10 @@
 			<translation language="fr"><![CDATA[disponible]]></translation>
 			<translation language="en"><![CDATA[available]]></translation>
 		</item>
+		<item type="label" name="AvailabilityGone">
+			<translation language="fr"><![CDATA[a rejoint sa famille]]></translation>
+			<translation language="en"><![CDATA[joined its family]]></translation>
+		</item>
 		<item type="label" name="AvailabilityKeeper">
 			<translation language="fr"><![CDATA[reste à l'élevage]]></translation>
 			<translation language="en"><![CDATA[keeper]]></translation>
@@ -41,6 +45,10 @@
 		<item type="label" name="AvailabilityNull">
 			<translation language="fr"><![CDATA[indeterminée]]></translation>
 			<translation language="en"><![CDATA[undertermined]]></translation>
+		</item>
+		<item type="label" name="AvailabilityPrereserved">
+			<translation language="fr"><![CDATA[option]]></translation>
+			<translation language="en"><![CDATA[prereserved]]></translation>
 		</item>
 		<item type="label" name="AvailabilityReserved">
 			<translation language="fr"><![CDATA[réservé]]></translation>
@@ -246,6 +254,10 @@
 			<translation language="fr"><![CDATA[disponible]]></translation>
 			<translation language="en"><![CDATA[available]]></translation>
 		</item>
+		<item type="label" name="AvailabilityGone">
+			<translation language="fr"><![CDATA[a rejoint sa famille]]></translation>
+			<translation language="en"><![CDATA[joined its family]]></translation>
+		</item>
 		<item type="label" name="AvailabilityKeeper">
 			<translation language="fr"><![CDATA[reste à l'élevage]]></translation>
 			<translation language="en"><![CDATA[keeper]]></translation>
@@ -253,6 +265,10 @@
 		<item type="label" name="AvailabilityReserved">
 			<translation language="fr"><![CDATA[reservé]]></translation>
 			<translation language="en"><![CDATA[reserved]]></translation>
+		</item>
+		<item type="label" name="AvailabilityPrereserved">
+			<translation language="fr"><![CDATA[option]]></translation>
+			<translation language="en"><![CDATA[prereserved]]></translation>
 		</item>
 		<item type="label" name="Availability">
 			<translation language="fr"><![CDATA[disponibilité]]></translation>

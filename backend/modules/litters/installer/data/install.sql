@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `litters_youngs`(
 	`color` varchar(100) DEFAULT NULL,
 	`ems_code` varchar(15) DEFAULT NULL,
 	`quality` enum('NULL','PET','BREEDER','SHOW') DEFAULT NULL,
-	`availability` enum('NULL','AVAILABLE','RESERVED','KEEPER') DEFAULT NULL,
+	`availability` enum('NULL','AVAILABLE','RESERVED','PRERESERVED','KEEPER','GONE') DEFAULT NULL,
 	`url` varchar(255) DEFAULT NULL,
 	`photo_url` varchar(255) DEFAULT NULL,
 	`created_on` datetime NOT NULL,
