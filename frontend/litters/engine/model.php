@@ -14,14 +14,15 @@
  */
 class FrontendLittersModel
 {
-	/**
-	 * Fetches a certain litter
-	 *
-	 * @param string $URL
-	 * @return array
-	 */
-	public static function getLitter($URL){
-		$query = <<< EOQ
+    /**
+     * Fetches a certain litter
+     *
+     * @param string $URL
+     * @return array
+     */
+    public static function getLitter($URL)
+    {
+        $query = <<< EOQ
 SELECT
 	litters.*,
 	UNIX_TIMESTAMP(litters.birth_date) AS birth_date,
@@ -48,55 +49,65 @@ LEFT JOIN litters_parents AS father on litters.father_id = father.id
 LEFT JOIN litters_parents AS mother on litters.mother_id = mother.id
 WHERE meta.url = ?
 EOQ;
-		$item = (array) FrontendModel::getContainer()->get('database')->getRecord($query, array((string) $URL)
-		);
+        $item = (array) FrontendModel::getContainer()->get('database')->getRecord($query, array((string) $URL)
+        );
 
-		// no results?
-		if(empty($item)) return array();
+        // no results?
+        if (empty($item)) {
+            return array();
+        }
 
-		// create full url
-		$item['full_url'] = FrontendNavigation::getURLForBlock('litters', 'detail') . '/' . $item['url'];
+        // create full url
+        $item['full_url'] = FrontendNavigation::getURLForBlock('litters', 'detail') . '/' . $item['url'];
 
-		// add booleans mark affix positions
-		if($item['mother_affix_position'] == 'PREPEND')		$item['mother_affix_prepend'] = true;
-		elseif($item['mother_affix_position'] == 'APPEND')	$item['mother_affix_append'] = true;
-		if($item['father_affix_position'] == 'PREPEND')		$item['father_affix_prepend'] = true;
-		elseif($item['father_affix_position'] == 'APPEND')	$item['father_affix_append'] = true;
+        // add booleans mark affix positions
+        if ($item['mother_affix_position'] == 'PREPEND') {
+            $item['mother_affix_prepend'] = true;
+        } elseif ($item['mother_affix_position'] == 'APPEND') {
+            $item['mother_affix_append'] = true;
+        }
+        if ($item['father_affix_position'] == 'PREPEND') {
+            $item['father_affix_prepend'] = true;
+        } elseif ($item['father_affix_position'] == 'APPEND') {
+            $item['father_affix_append'] = true;
+        }
 
-		return $item;
-	}
+        return $item;
+    }
 
-	/**
-	 * Fetches the youngs belonging to a given litter
-	 *
-	 * @param int $id
-	 * @return array
-	 */
-	public static function getYoungs($id){
-		$query = <<< EOQ
+    /**
+     * Fetches the youngs belonging to a given litter
+     *
+     * @param int $id
+     * @return array
+     */
+    public static function getYoungs($id)
+    {
+        $query = <<< EOQ
 SELECT *
 FROM litters_youngs
 WHERE litter_id = ?
 ORDER BY sequence ASC, id DESC;
 EOQ;
-		$youngs = (array)FrontendModel::getContainer()->get('database')->getRecords($query, array((int)$id));
-		foreach($youngs as &$young){
-			$young['availability'] = ucfirst(FL::lbl('Availability' . ucfirst(strtolower($young['availability']))));
-			$young['quality'] = ucfirst(FL::lbl('Quality' . ucfirst(strtolower($young['quality']))));
-		}
-		return $youngs;
-	}
+        $youngs = (array)FrontendModel::getContainer()->get('database')->getRecords($query, array((int)$id));
+        foreach ($youngs as &$young) {
+            $young['availability'] = ucfirst(FL::lbl('Availability' . ucfirst(strtolower($young['availability']))));
+            $young['quality'] = ucfirst(FL::lbl('Quality' . ucfirst(strtolower($young['quality']))));
+        }
+        return $youngs;
+    }
 
-	/**
-	 * Get all items (at least a chunk)
-	 *
-	 * @param int[optional]		$limit	The number of items to get
-	 * @param int[optional]		$offset	The offset
-	 * @param string[optional]	$table	The table to query
-	 * @return array
-	 */
-	public static function getAll($limit = 10, $offset = 0, $table = 'litters'){
-		$query = <<< EOQ
+    /**
+     * Get all items (at least a chunk)
+     *
+     * @param int[optional]		$limit	The number of items to get
+     * @param int[optional]		$offset	The offset
+     * @param string[optional]	$table	The table to query
+     * @return array
+     */
+    public static function getAll($limit = 10, $offset = 0, $table = 'litters')
+    {
+        $query = <<< EOQ
 SELECT *
 FROM ${table}
 JOIN meta ON {$table}.meta_id = meta.id
@@ -104,41 +115,44 @@ WHERE language = ?
 ORDER BY sequence ASC, ${table}.id DESC
 LIMIT ?, ?;
 EOQ;
-		$items = (array) FrontendModel::getContainer()->get('database')->getRecords($query ,array(FRONTEND_LANGUAGE, (int) $offset, (int) $limit));
+        $items = (array) FrontendModel::getContainer()->get('database')->getRecords($query, array(FRONTEND_LANGUAGE, (int) $offset, (int) $limit));
 
-		// no results?
-		if(empty($items)) return array();
+        // no results?
+        if (empty($items)) {
+            return array();
+        }
 
-		// get detail action url
-		$detailUrl = FrontendNavigation::getURLForBlock('litters', 'detail');
+        // get detail action url
+        $detailUrl = FrontendNavigation::getURLForBlock('litters', 'detail');
 
-		// prepare items for search
-		foreach($items as &$item)
-		{
-			$item['full_url'] =  $detailUrl . '/' . $item['url'];
-		}
+        // prepare items for search
+        foreach ($items as &$item) {
+            $item['full_url'] =  $detailUrl . '/' . $item['url'];
+        }
 
-		// return
-		return $items;
-	}
+        // return
+        return $items;
+    }
 
-	/**
-	 * Get the number of items
-	 *
-	 * @param	string[optional]	$table	The table to query
-	 * @return	int
-	 */
-	public static function getAllCount($table = 'litters'){
-		$query = <<< EOQ
+    /**
+     * Get the number of items
+     *
+     * @param	string[optional]	$table	The table to query
+     * @return	int
+     */
+    public static function getAllCount($table = 'litters')
+    {
+        $query = <<< EOQ
 SELECT COUNT(id) AS count
 FROM ${table};
 EOQ;
 
-		return (int) FrontendModel::getContainer()->get('database')->getVar($query);
-	}
+        return (int) FrontendModel::getContainer()->get('database')->getVar($query);
+    }
 
-	public static function search(array $ids){
-		$query = <<< EOQ
+    public static function search(array $ids)
+    {
+        $query = <<< EOQ
 SELECT
 	litters.id,
 	litters.name AS title,
@@ -164,15 +178,15 @@ FROM litters
 WHERE litters.language = ?;
 EOQ;
 
-		$items = (array) FrontendModel::getContainer()->get('database')->getRecords($query, array(FRONTEND_LANGUAGE), 'id');
+        $items = (array) FrontendModel::getContainer()->get('database')->getRecords($query, array(FRONTEND_LANGUAGE), 'id');
 
-		// prepare items for search
-		$detailUrl = FrontendNavigation::getURLForBlock('litters', 'detail');
-		foreach($items as $key => $item){
-			$items[$key]['full_url'] = $detailUrl . '/' . $item['url'];
-			$items[$key]['text'] = sprintf(FL::lbl('SearchText'), urldecode($item['mother']), urldecode($item['father']), urldecode($item['birth_date']));
-		}
+        // prepare items for search
+        $detailUrl = FrontendNavigation::getURLForBlock('litters', 'detail');
+        foreach ($items as $key => $item) {
+            $items[$key]['full_url'] = $detailUrl . '/' . $item['url'];
+            $items[$key]['text'] = sprintf(FL::lbl('SearchText'), urldecode($item['mother']), urldecode($item['father']), urldecode($item['birth_date']));
+        }
 
-		return $items;
-	}
+        return $items;
+    }
 }
